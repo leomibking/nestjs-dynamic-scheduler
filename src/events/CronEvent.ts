@@ -1,4 +1,6 @@
 export class CronEvent {
-  constructor(protected payload: object) {
+  constructor(public payload: CronPayload) {
   }
 }
+
+export type CronPayload = { jobName: string, eventName: string; cron: string; enable: boolean };

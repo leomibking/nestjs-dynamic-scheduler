@@ -17,18 +17,20 @@ export class DynamicSchedulerConfiguration implements OnApplicationBootstrap {
 
   async onApplicationBootstrap(): Promise<void> {
     for (const job of crons) {
-      if (!job.enable) {
-        this.logger.error(`Job ${JSON.stringify(job)} not enabled. Ignoring.`);
-        continue;
-      }
       this.logger.log(`Processing job ${JSON.stringify(job)}`);
+      const jobName = `cron.${job.eventName}`;
       const cronJob = new CronJob(job.cron, () => {
         this.logger.log(`time (${job.cron}) for job ${job.eventName} to run!`);
-        this.eventEmitter.emit(job.eventName, new CronEvent(job));
+        this.eventEmitter.emit(jobName, new CronEvent({ ...job, jobName }));
       });
 
-      this.schedulerRegistry.addCronJob(job.eventName, cronJob);
-      cronJob.start();
+      this.schedulerRegistry.addCronJob(jobName, cronJob);
+
+      if (job.enable) {
+        cronJob.start();
+      } else {
+        this.logger.error(`Job ${JSON.stringify(job)} not enabled. Ignoring.`);
+      }
     }
   }
 }

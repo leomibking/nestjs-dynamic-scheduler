@@ -6,7 +6,7 @@ import { CronEvent } from '../CronEvent';
 export class EventDEFHandler {
   private logger = new Logger(EventDEFHandler.name);
 
-  @OnEvent('event.def')
+  @OnEvent('cron.event.def')
   public async handle(payload: CronEvent): Promise<void> {
     this.logger.log(JSON.stringify(payload));
   }
