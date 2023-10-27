@@ -11,9 +11,8 @@ export class DynamicSchedulerConfiguration implements OnApplicationBootstrap {
 
   constructor(
     private schedulerRegistry: SchedulerRegistry,
-    private eventEmitter: EventEmitter2
-  ) {
-  }
+    private eventEmitter: EventEmitter2,
+  ) {}
 
   async onApplicationBootstrap(): Promise<void> {
     for (const job of crons) {

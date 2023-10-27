@@ -1,7 +1,7 @@
 [
   {
     "eventName": "event.abc",
-    "cron": "0/10 * * * * *",
+    "cron": "0/11 * * * * *",
     "enable": true
   },
   {
