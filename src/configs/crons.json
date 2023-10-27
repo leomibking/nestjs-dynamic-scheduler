@@ -1,0 +1,17 @@
+[
+  {
+    "eventName": "event.abc",
+    "cron": "0/10 * * * * *",
+    "enable": true
+  },
+  {
+    "eventName": "event.def",
+    "cron": "0/5 * * * * *",
+    "enable": false
+  },
+  {
+    "eventName": "event.ghi",
+    "cron": "0/3 * * * * *",
+    "enable": true
+  }
+]
