@@ -7,7 +7,7 @@ export class EventABCHandler {
   private logger = new Logger(EventABCHandler.name);
 
   @OnEvent('cron.event.abc')
-  public async handle(payload: CronEvent): Promise<void> {
-    this.logger.log(JSON.stringify(payload));
+  public async handle(): Promise<void> {
+    this.logger.log('alface abc');
   }
 }
